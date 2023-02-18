@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ApiTodoListController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('todolist', [ApiTodoListController::class, 'getList']);
+Route::post('todolist/create', [ApiTodoListController::class, 'postList']);
+Route::post('todolist/update', [ApiTodoListController::class, 'postUpdate']);
+Route::post('todolist/delete', [ApiTodoListController::class, 'postDelete']);
