@@ -21,6 +21,7 @@ Route::get('/', function () {
 Route::get('todolist', [TodoListController::class, 'index']);
 
 Route::get('todolist/get', [ApiTodoListController::class, 'getList']);
+Route::post('todolist/getdetail/{id}', [ApiTodoListController::class, 'getListDetail']);
 Route::post('todolist/create', [ApiTodoListController::class, 'postList']);
-Route::post('todolist/update', [ApiTodoListController::class, 'postUpdate']);
-Route::post('todolist/delete', [ApiTodoListController::class, 'postDelete']);
+Route::post('todolist/update/{id}', [ApiTodoListController::class, 'postUpdate']);
+Route::post('todolist/delete/{id}', [ApiTodoListController::class, 'postDelete']);

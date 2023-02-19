@@ -11,25 +11,33 @@ class ApiTodoListController extends Controller
     //
     public function getList() {
         $result = ApiTodoList::orderBy('id', 'desc')->get();
+        if (request()->has('search')) {
+            $result = ApiTodoList::where('content', 'like', '%' . request()->search . '%')->orderBy('id', 'desc')->get();
+        }
         return response()->json($result);
     }
 
     public function postList(Request $request) {
         $list = new ApiTodoList();
-        $list->content ="fssfs";
+        $list->content = $request->content;
         $list->save();
         return response()->json(['status' => true, 'message' => 'Data berhasil ditambahkan!']);
     }
 
-    public function postUpdate(Request $request) {
-        $list = ApiTodoList::find($request->id);
+    public function getListDetail($id, Request $request) {
+        $result = ApiTodoList::find($id);
+        return response()->json($result);
+    }
+
+    public function postUpdate($id, Request $request) {
+        $list = ApiTodoList::find($id);
         $list->content = $request->content;
         $list->save();
         return response()->json(['status' => true, 'message' => 'Data berhasil diupdate!']);
     }
 
-    public function postDelete(Request $request) {
-        $list = ApiTodoList::find($request->id);
+    public function postDelete($id, Request $request) {
+        $list = ApiTodoList::find($id);
         $list->delete();
         return response()->json(['status' => true, 'message' => 'Data berhasil dihapus!']);
     }
