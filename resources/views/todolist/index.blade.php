@@ -61,7 +61,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" style="margin-top: 20px;">
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6">
                     <div class="text-right mb-3">
@@ -78,7 +78,7 @@
                                 <tr v-for="item in data_list">
                                     <td>
                                         @{{item.content}}
-                                        <a href="javascript:;" @click="editTodoList(item.id)" class="btn btn-secondary">Ubah</a>
+                                        <a href="javascript:;" @click="editTodoList(item.id)" class="btn btn-info">Ubah</a>
                                         <a href="javascript:;" @click="DeleteTodoList(item.id)" class="btn btn-danger">Hapus</a>
                                     </td>
                                 </tr>
